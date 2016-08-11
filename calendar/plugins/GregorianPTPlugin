@@ -1,0 +1,46 @@
+var GregorianCalendarPT = GregorianCalendarPT || {
+    name: "Calendário Gregoriano",
+
+    startingDate : {
+            day: 11,
+            month: 8,
+            year: 2016
+    },
+
+    setting :  {
+        daysOfYear : 365,
+        daysOfTheWeek: [
+            'Domingo',
+            'Segunda-Feira',
+            'Terça-Feira',
+            'Quarta-Feira',
+            'Quinta-Feira',
+            'Sexta-Feira',
+            'Sábado'
+        ],
+        monthsOfTheYear: [
+            {name:'Janeiro', days: 31, season: Season.WINTER},
+            {name:'Fevereiro', days: 28, season: Season.WINTER},
+            {name:'Março', days: 31, season: Season.SPRING},
+            {name:'Abril', days: 30, season: Season.SPRING},
+            {name:'Maio', days: 31, season: Season.SPRING},
+            {name:'Junho', days: 30, season: Season.SUMMER},
+            {name:'Julho', days: 31, season: Season.SUMMER},
+            {name:'Agosto', days: 31, season: Season.SUMMER},
+            {name:'Setembro', days: 30, season: Season.FALL},
+            {name:'Outubro', days: 31, season: Season.FALL},
+            {name:'Novembro', days: 30, season: Season.FALL},
+            {name:'Dezembro', days: 31, season: Season.WINTER}
+        ],
+        yearPrefix: 'DC',
+        seasons : [
+            "Primavera",
+            "Verão",
+            "Outono",
+            "Inverno"
+        ],
+    }
+
+};
+
+CALENDAR = GregorianCalendarPT;
