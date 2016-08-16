@@ -347,8 +347,8 @@ var AdvancedCalendar = AdvancedCalendar || {
         },
 
         CheckInstall: function(calendar) {
-            /*if(! state.hasOwnProperty('AdvancedCalendar') || state.AdvancedCalendar.version != AdvancedCalendar.version)
-            {*/
+            if(! state.hasOwnProperty('AdvancedCalendar') || state.AdvancedCalendar.version != AdvancedCalendar.version)
+            {
                 log("Reseting calendar data...");
                 // Default Settings stored in the state.
                 state.AdvancedCalendar = {
@@ -358,7 +358,7 @@ var AdvancedCalendar = AdvancedCalendar || {
                     holidays : calendar.holidays,
                     schedule: {},
                 }
-            /*}*/
+            }
         },
 
         SetWeather: function(date, weather) {
