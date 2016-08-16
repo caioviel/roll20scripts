@@ -347,8 +347,8 @@ var AdvancedCalendar = AdvancedCalendar || {
         },
 
         CheckInstall: function(calendar) {
-            if(! state.hasOwnProperty('AdvancedCalendar') || state.AdvancedCalendar.version != AdvancedCalendar.version)
-            {
+            /*if(! state.hasOwnProperty('AdvancedCalendar') || state.AdvancedCalendar.version != AdvancedCalendar.version)
+            {*/
                 log("Reseting calendar data...");
                 // Default Settings stored in the state.
                 state.AdvancedCalendar = {
@@ -358,7 +358,7 @@ var AdvancedCalendar = AdvancedCalendar || {
                     holidays : calendar.holidays,
                     schedule: {},
                 }
-            }
+            /*}*/
         },
 
         SetWeather: function(date, weather) {
@@ -380,6 +380,7 @@ var AdvancedCalendar = AdvancedCalendar || {
             } else {
                 var s = state.AdvancedCalendar.setting;
                 var season = s.monthsOfTheYear[date.month -1].season;
+                log(season);
                 var w = WeatherRandomGenerator.GenerateWeather(season);
                 sched[dateId] = {};
                 sched[dateId]["weather"] = w;
@@ -396,6 +397,7 @@ var AdvancedCalendar = AdvancedCalendar || {
             } else {
                 var s = state.AdvancedCalendar.setting;
                 var season = s.monthsOfTheYear[date.month -1].season;
+                log(season);
                 var w = WeatherRandomGenerator.GenerateWeather(season);
                 sched[dateId] = {};
                 sched[dateId]["weather"] = w;
@@ -431,8 +433,13 @@ var AdvancedCalendar = AdvancedCalendar || {
             var n = state.AdvancedCalendar.now;
             var s = state.AdvancedCalendar.setting;
 
+            log(n);
+
             var y = Math.floor(days/s.daysOfYear);
             days-=(y*s.daysOfYear);
+
+            log(n.day + days);
+            log(s.monthsOfTheYear[n.month -1].days);
 
             while (n.day + days > s.monthsOfTheYear[n.month -1].days) {
                 days =  days - s.monthsOfTheYear[n.month -1].days + n.day;
@@ -446,6 +453,9 @@ var AdvancedCalendar = AdvancedCalendar || {
                 }
 
             }
+
+            log("days: " + days);
+            log("years: " + y);
 
             n.day += days; 
             n.year = n.year + y;
@@ -950,7 +960,7 @@ var AdvancedCalendar = AdvancedCalendar || {
                     log(logdata);
                     AdvancedCalendar.AddLog(state.AdvancedCalendar.now, msg.who, logdata, true);
                     break;
-
+                    
                 case 'weather':
                     if (!isGM) return;
 
